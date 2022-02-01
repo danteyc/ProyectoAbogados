@@ -1,5 +1,15 @@
 nav{
-    width: 500px;
-    background-color: aqua;
-    margin:0 auto;
+    ul{
+        display: flex;
+        list-style-type: none;
+        li {
+            margin-left: 10px;
+            &:first-child {
+                margin-left: 0;
+            }
+            a{
+                color: white;
+            }
+        }
+    }
 }

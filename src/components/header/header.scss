@@ -1,5 +1,17 @@
-header{
+.container{
     max-width: 980px;
-    background-color: red;
-    
+    margin: 0 auto;
+}
+
+header{
+    background-color:#275165;
+    height: 60px;
+}
+.header-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header-logo{
+    color: white
 }

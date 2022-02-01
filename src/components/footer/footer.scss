@@ -1,3 +1,17 @@
 footer{
-    color:orange;
+    background: #275165;
+    height: 60px;
+}
+
+.footer-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    a{
+        text-decoration: none;
+        color: white;
+    }
+    p{
+        color: white;
+    }
 }
