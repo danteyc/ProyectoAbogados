@@ -16,26 +16,30 @@ import { PageRegistro } from "./pages/PageRegistro/PageRegistro"
 
 function App() {
   return (
-    <div className='wrapper'>
-      <Header/>
-      <Main>
-        <Switch>
-          <Route path="/">
-            <PageHome />
-          </Route>
-          <Route path="/abogado">
-            <PageAbogado />
-          </Route>
-          <Route path="/lista-abogados">
-            <PageListaAbogados />
-          </Route>
-          <Route path="/registro">
-            <PageRegistro />
-          </Route>
-        </Switch>
-      </Main>
-      <Footer/>
-    </div>
+    <Router>
+      <div className='wrapper'>
+        <Header/>
+        <Main>
+          <Switch>
+            <Route path="/home">
+              <PageHome />
+            </Route>
+            <Route path="/abogado">
+              <PageAbogado />
+            </Route>
+            <Route path="/lista-abogados">
+              <PageListaAbogados />
+            </Route>
+            <Route path="/registro">
+              <PageRegistro />
+            </Route>
+            <Redirect exact from="/" to="/home" />
+          </Switch>
+        </Main>
+        <Footer/>
+      </div>
+    </Router>
+
 
   );
 }
