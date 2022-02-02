@@ -13,6 +13,7 @@ import { PageHome } from "./pages/PageHome/PageHome"
 import { PageAbogado } from "./pages/PageAbogado/PageAbogado"
 import { PageListaAbogados } from "./pages/PageListaAbogados/PageListaAbogados"
 import { PageRegistro } from "./pages/PageRegistro/PageRegistro"
+import "./assets/style/main.scss"
 
 function App() {
   return (

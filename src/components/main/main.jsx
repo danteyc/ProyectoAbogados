@@ -5,6 +5,11 @@ export function Main(props) {
       children
     } = props;
   
-    return <main className="main">{children}</main>;
+    return (
+    <main className="main">
+      <div className="container">
+        {children}
+      </div>
+    </main>);
   }
   
