@@ -13,6 +13,7 @@ import { PageHome } from "./pages/PageHome/PageHome"
 import { PageAbogado } from "./pages/PageAbogado/PageAbogado"
 import { PageListaAbogados } from "./pages/PageListaAbogados/PageListaAbogados"
 import { PageRegistro } from "./pages/PageRegistro/PageRegistro"
+import { PageContacto } from "./pages/PageContacto/PageContacto";
 import "./assets/style/main.scss"
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
         <Header/>
         <Main>
           <Switch>
-            <Route path="/home">
+            <Route exact path="/">
               <PageHome />
             </Route>
             <Route path="/abogado">
@@ -34,7 +35,9 @@ function App() {
             <Route path="/registro">
               <PageRegistro />
             </Route>
-            <Redirect exact from="/" to="/home" />
+            <Route path="/contacto">
+              <PageContacto/>
+            </Route>
           </Switch>
         </Main>
         <Footer/>
