@@ -1,5 +1,5 @@
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
   Switch,
   Route,
   Redirect,
@@ -18,7 +18,7 @@ import "./assets/style/main.scss"
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <div className='wrapper'>
         <Header/>
         <Main>
@@ -42,7 +42,7 @@ function App() {
         </Main>
         <Footer/>
       </div>
-    </Router>
+    </BrowserRouter>
 
 
   );
