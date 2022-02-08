@@ -9,11 +9,11 @@ import './App.css';
 import { Header } from "./components/header/header"
 import { Main } from "./components/main/main"
 import { Footer } from "./components/footer/footer"
-import { PageHome } from "./pages/PageHome/PageHome"
-import { PageAbogado } from "./pages/PageAbogado/PageAbogado"
-import { PageListaAbogados } from "./pages/PageListaAbogados/PageListaAbogados"
-import { PageRegistro } from "./pages/PageRegistro/PageRegistro"
-import { PageContacto } from "./pages/PageContacto/PageContacto";
+import { PageHome } from "./pages/home/home"
+import { PageAbogado } from "./pages/abogado/abogado"
+import { PageListaAbogados } from "./pages/listaAbogados/listaAbogados"
+import { PageRegistro } from "./pages/registro/registro"
+import { PageContacto } from "./pages/contacto/contacto";
 import "./assets/style/main.scss"
 
 function App() {

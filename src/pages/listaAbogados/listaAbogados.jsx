@@ -1,12 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import "./PageListaAbogados.scss"
+import "./listaAbogados.scss"
 export function PageListaAbogados(){
     const direccionApi = "https://61f426e510f0f7001768c855.mockapi.io/abogados";
     
     const[datosAbogados,SetDatosAbogados] = useState([]);
-    
-
     
     useEffect(()=> {
         axios.get(direccionApi)
