@@ -18,6 +18,7 @@ export function PageListaAbogados(){
         <div>
             {datosAbogados.map((abogado)=>(
                 <div>
+                    Hola
                     <h1>{abogado.nombre}</h1>
                     <h2>{abogado.apellido}</h2>
                     <h2>{abogado.empresa}</h2>
