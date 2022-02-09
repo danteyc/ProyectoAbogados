@@ -10,7 +10,6 @@ export function PageListaAbogados(){
         axios.get(direccionApi)
             .then((respuesta)=>{
                 SetDatosAbogados(respuesta.data);
-//               console.log(respuesta.data);
             })
     },[]);
 
