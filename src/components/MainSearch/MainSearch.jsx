@@ -41,7 +41,7 @@ export function MainSearch() {
               <Option value="trujillo">Trujillo</Option>
             </Select>
             <Button type="primary" icon={<SearchOutlined />} size="large" onClick={()=>{
-                console.log("probando");
+                console.log("prueba");
             }}>
               Buscar
             </Button>
