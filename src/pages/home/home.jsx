@@ -1,6 +1,10 @@
-import "./home.scss"
-export function PageHome(){
-    return (
-        <h1>Home</h1>
-    )
+import { MainSearch } from "../../components/MainSearch/MainSearch";
+import "./home.scss";
+
+export function PageHome() {
+  return (
+    <>
+      <MainSearch/>
+    </>
+  );
 }
