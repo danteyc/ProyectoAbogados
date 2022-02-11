@@ -15,6 +15,7 @@ import { PageListaAbogados } from "./pages/listaAbogados/listaAbogados"
 import { PageRegistro } from "./pages/registro/registro"
 import { PageContacto } from "./pages/contacto/contacto";
 import "./assets/style/main.scss"
+import 'antd/dist/antd.css';
 
 function App() {
   return (
