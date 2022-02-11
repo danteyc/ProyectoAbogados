@@ -1,4 +1,4 @@
-import "./PageAbogado.scss";
+import "./abogado.scss";
 
 export function PageAbogado() {
   return (
