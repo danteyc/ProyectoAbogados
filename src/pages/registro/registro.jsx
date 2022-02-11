@@ -23,7 +23,7 @@ export function PageRegistro(){
                         </Form.Item>
 
                         <Form.Item name="NumerodeColegiatura" label="Nro de colegiatura">
-                        <Input placeholder="Ingresa tus nombres"/>
+                        <Input placeholder="Ingresa tu nro de colegiatura"/>
                         </Form.Item>
 
                         <Form.Item name="DNI" label="DNI">
