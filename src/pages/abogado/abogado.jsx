@@ -2,31 +2,28 @@ import "./abogado.scss";
 
 export function PageAbogado() {
   return (
-    <div>
-            <div>NOMBRE Y APELLIDO</div>
-            <div>ESPECIALIDAD</div>
-            <img src="https://cdn.pixabay.com/photo/2014/06/27/16/47/person-378368_960_720.png" width="300px" alt="" />
-            <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
-            consequuntur deserunt iusto voluptatem, explicabo perspiciatis corrupti
-            aut aperiam possimus quasi sapiente, assumenda est. Neque, doloremque.
-            Debitis deleniti perspiciatis itaque pariatur?
-            </p>
-            <div>AREAS DE PRACTICA</div>
-            <ul>
-                  <li>Compliance Corporativo</li>
-                  <li>Derecho Administrativo</li>
-                  <li>Protección de Datos</li>
-                  <li>TMT Tecnología de la Información</li>
-            </ul>
-            <div>INDUSTRIAS DE ESPECIALIDAD</div>
-            <ul>
-                  <li>Consumo Masivo y Retail</li>
-                  <li>Educación</li>
-                  <li>Instituciones Financieras</li>
-                  <li>Sin Fines de Lucro</li>
-                  <li>Tecnología y Telecomunicaciones</li>
-            </ul>
+    <div className="box">
+            <div className="panel_izquierdo">          
+              <div className="imagen">
+                <img src="https://cdn.pixabay.com/photo/2014/06/27/16/47/person-378368_960_720.png" width="200px" alt="" />
+                <h2>Dr. Nombre Apellido</h2>
+                <h3>ESPECIALIDAD</h3>
+              </div>
+              <h2>DESCRIPCION</h2>
+              <p>                  
+                  Aqui se coloca la experiencia y areas de trabajo realizado asi como logros alcanzados en los casos llevados.
+              </p>
+              <div className="resena">
+                <h2>RESEÑAS:</h2>
+                <p>
+                  Aqui se coloca las opiniones de los clientes
+                </p>
+              </div>              
+            </div>  
+            <div className="panel_derecho">
+              <h1>AGENDAR UNA CITA</h1> 
+            </div>
+           
     </div>
   );
 }
