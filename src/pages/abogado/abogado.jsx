@@ -9,6 +9,8 @@ export function PageAbogado() {
                 <h2>Dr. Nombre Apellido</h2>
                 <h3>ESPECIALIDAD</h3>
               </div>
+              <br>
+              </br>
               <h2>DESCRIPCION</h2>
               <p>                  
                   Aqui se coloca la experiencia y areas de trabajo realizado asi como logros alcanzados en los casos llevados.
