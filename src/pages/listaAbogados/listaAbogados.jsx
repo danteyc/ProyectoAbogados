@@ -1,28 +1,17 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { Link } from "react-router-dom"
 import "./listaAbogados.scss"
 export function PageListaAbogados(){
-    const direccionApi = "https://61f426e510f0f7001768c855.mockapi.io/abogados";
-    
-    const[datosAbogados,SetDatosAbogados] = useState([]);
-    
-    useEffect(()=> {
-        axios.get(direccionApi)
-            .then((respuesta)=>{
-                SetDatosAbogados(respuesta.data);
-            })
-    },[]);
-
-    return (
-        <div>
-            {datosAbogados.map((abogado)=>(
-                <div>
-                    <h1>{abogado.nombre}</h1>
-                    <h2>{abogado.apellido}</h2>
-                    <h2>{abogado.empresa}</h2>
-                    <img src={abogado.foto} width="300"/>
+    return(
+            <Link>rel="stylesheet" href="listaAbogados.scss"</Link>,
+            <h1>prueba de pagina</h1>,
+            <body>
+                <div>class="container"
+                    <div>class="card"
+                        <figure>
+                            <img src="img1.jpg" width="400" height="400"/>
+                        </figure>
+                    </div>
                 </div>
-            ))}
-        </div>
+            </body>
     )
 }
