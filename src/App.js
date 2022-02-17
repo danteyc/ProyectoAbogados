@@ -3,7 +3,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-
+import "antd/dist/antd.min.css"
 import './App.css';
 import { Header } from "./components/header/header";
 import { Main } from "./components/main/main";
@@ -13,7 +13,7 @@ import { PageAbogado } from "./pages/abogado/abogado";
 import { PageListaAbogados } from "./pages/listaAbogados/listaAbogados";
 import { PageRegistro } from "./pages/registro/registro";
 import { PageContacto } from "./pages/contacto/contacto";
-import "antd/dist/antd.min.css"
+
 import "./assets/style/main.scss";
 
 
