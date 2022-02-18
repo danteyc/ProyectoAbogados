@@ -1,16 +1,24 @@
 import "./mainsearch.scss";
 import { Form, Button, Select } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
+import { useHistory } from "react-router-dom";
 
 const { Option } = Select;
 
-function handleChange(value) {
-  console.log(`selected ${value}`);
-}
-
 export function MainSearch() {
-  const onFinish = (values: any) => {
-    console.log("Success:", values);
+  const history = useHistory();
+  const onFinish = (values) => {
+    const city = values.city;
+    const speciality = values.speciality;
+    if (city!==undefined && speciality!== undefined){
+      history.push(`/${city}/${speciality}`)
+    } else if (city!== undefined || speciality!== undefined){
+      if(city===undefined){
+        history.push(`/todos/${speciality}`);
+      } else(
+        history.push(`/${city}/todos`)
+      )
+    }
   };
   return (
     <div className="main-search">
@@ -21,13 +29,18 @@ export function MainSearch() {
         <h1>Encuentra a tu abogado</h1>
         <h2>1200 profesionales están aquí para ayudarte</h2>
         <div className="search-box">
-          <Form name="search" onFinish={onFinish} layout="inline">
+          <Form 
+          name="search" 
+          onFinish={onFinish}
+          layout="inline"
+          className="search-form"
+          >
             <Form.Item name="speciality" >
               <Select
                 placeholder="P. Ejm. Penal"
-                style={{ width: 250, marginRight: 10 }}
-                onChange={handleChange}
                 size="large"
+                className="form-item"
+                showSearch
               >
                 <Option value="penal">Penal</Option>
                 <Option value="registral">Registral</Option>
@@ -36,10 +49,10 @@ export function MainSearch() {
             </Form.Item>
             <Form.Item  name="city">
               <Select
-                defaultValue="lima"
-                style={{ width: 250 }}
-                onChange={handleChange}
+                placeholder="P. Ejm. Lima"
                 size="large"
+                className="form-item"
+                showSearch
               >
                 <Option value="tacna">Tacna</Option>
                 <Option value="lima">Lima</Option>
@@ -52,6 +65,7 @@ export function MainSearch() {
                 icon={<SearchOutlined />}
                 size="large"
                 htmlType="submit"
+                className="btn-search"
               >
                 Buscar
               </Button>
