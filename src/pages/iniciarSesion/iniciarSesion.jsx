@@ -2,26 +2,53 @@ import { Form, Input, Button, Checkbox } from "antd";
 import "./iniciarSesion.scss"
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
+import { useEffect,useState } from "react";
 
 export function PageIniciarSesion() {
   const history = useHistory();
   const dispatch = useDispatch();
+  const [data,setData]=useState({});
+
+  function userExist(email,password,users){
+    const actualUser = users.filter((dataUser) => dataUser.email === email && dataUser.password === password);
+    if (actualUser.length > 0){
+      console.log("EXISTE USUARIO",actualUser);
+      dispatch({
+        type: "SET_ID",
+        payload: actualUser[0].id,
+      });
+      dispatch({
+        type: "SET_NAME",
+        payload: actualUser[0].name,
+      });
+      dispatch({
+        type: "SET_IS_LOGIN",
+        payload: true,
+      });
+      history.push("/perfil");
+    } else {
+      alert("No existe usuario");
+    }
+    return actualUser[0].id;
+  }
   const onFinish = (values) => {
     console.log("Success:", values);
-    history.push("/perfil");
-    dispatch({
-      type: "SET_IS_LOGIN",
-      payload: true,
-    });
-    dispatch({
-      type: "SET_NAME",
-      payload: "Dante",
-    });
+    const {email,password} = values;
+    console.log(email,password);
+    userExist(email,password,data);
   };
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+  useEffect(() => {
+    axios.get("http://localhost:3000/lawyers")
+    .then(response=>{
+      setData(response.data);
+    })
+  }, []);
+
   return (
     <div className="container cnt-login">
       <div className="form-login">

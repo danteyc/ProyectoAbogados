@@ -3,6 +3,11 @@ import { createStore } from "redux";
 const initialState = {
   name: null,
   isLogin: false,
+  user: {
+    email: "",
+    password: ""
+  },
+  id:null
 };
 
 function mainReducer(state = initialState, action) {
@@ -19,6 +24,18 @@ function mainReducer(state = initialState, action) {
       return{
         ...state,
         name: action.payload,
+      };
+    }
+    case "SET_DATA":{
+      return{
+        ...state,
+        data: action.payload,
+      };
+    }
+    case "SET_ID":{
+      return{
+        ...state,
+        data: action.payload,
       };
     }
     default:{

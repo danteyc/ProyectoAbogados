@@ -11,12 +11,12 @@ export function MainSearch() {
     const city = values.city;
     const speciality = values.speciality;
     if (city!==undefined && speciality!== undefined){
-      history.push(`/${city}/${speciality}`)
+      history.push(`abogados/${city}/${speciality}`)
     } else if (city!== undefined || speciality!== undefined){
       if(city===undefined){
-        history.push(`/todos/${speciality}`);
+        history.push(`abogados/todos/${speciality}`);
       } else(
-        history.push(`/${city}/todos`)
+        history.push(`abogados/${city}/todos`)
       )
     }
   };
