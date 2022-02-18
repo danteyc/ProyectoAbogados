@@ -1,5 +1,7 @@
 import "./abogado.scss";
 import { StarOutlined,StarFilled } from "@ant-design/icons";
+import wasap from "../../assets/images/wasap2.png"
+import ubicacion from "../../assets/images/ubicacion.png"
 
 export function PageAbogado() {
   return (
@@ -35,9 +37,12 @@ export function PageAbogado() {
             <div className="panel_derecho">
               <h1>AGENDAR UNA CITA </h1> 
               <div className="cita">
-                 <img src="https://1000marcas.net/wp-content/uploads/2019/11/WhatsApp-logo.png" width="75px" height="50px" alt="" />
-                 <h2>999 999 999</h2>
-                 
+                 <img src={wasap} width="30px" alt="logo wasap" />
+                 <h2>999 999 999</h2>                               
+              </div>
+              <div className="cita">                               
+                 <img src={ubicacion} width="30px" alt="logo ubicacion" />
+                 <h2>Lima</h2>                 
               </div>
                 
               
