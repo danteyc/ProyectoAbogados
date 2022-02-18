@@ -168,7 +168,8 @@
       "document":"98784421",
       "specialty": "Penal",
       "photo":"https://alessandri.legal/wp-content/uploads/2021/03/Kate-Hamilton.jpeg"
-    { "id": 15, 
+    },
+     { "id": 15, 
       "name": "Juan", 
       "lastname": "Bonilla",
       "email": "juanbonilla@gmail.com",
