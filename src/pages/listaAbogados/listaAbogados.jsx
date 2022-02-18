@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import "./listaAbogados.scss"
 export function PageListaAbogados(){
-    const direccionApi = "https://61f426e510f0f7001768c855.mockapi.io/abogados";
+    const direccionApi = "http://localhost:3000/data/lawyers";
     
     const[datosAbogados,SetDatosAbogados] = useState([]);
     
@@ -15,12 +15,11 @@ export function PageListaAbogados(){
 
     return (
         <div>
-            {datosAbogados.map((abogado)=>(
-                <div>
-                    <h1>{abogado.nombre}</h1>
-                    <h2>{abogado.apellido}</h2>
-                    <h2>{abogado.empresa}</h2>
-                    <img src={abogado.foto} width="300"/>
+            {datosAbogados.map((abogado,k)=>(
+                <div key={k}>
+                    <h1>{abogado.name}</h1>
+                    <h2>{abogado.lastname}</h2>
+                    <h2>{abogado.email}</h2>
                 </div>
             ))}
         </div>

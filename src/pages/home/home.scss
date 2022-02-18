@@ -1,0 +1,33 @@
+.cnt-main{
+    padding: 3rem 0 ;
+}
+
+.benefits{
+    display: flex;
+    justify-content: space-between;
+    .benefit{
+        width: 24%;
+        .benefit-title{
+            font-weight: 500;
+            font-size: 1.1em;
+            margin-bottom: 1.2em;
+            .icon{
+                color: #0c55c3;
+                font-size: 1.5em;
+                margin-right: 0.3em;
+            }
+        }
+    }
+}
+@media (max-width:850px){
+    .benefits{
+        display: block;
+        .benefit{
+            width: 100%;
+            margin-bottom: 1.5rem;
+            &:last-child{
+                margin-bottom: 0;
+            }
+        }
+    }
+}

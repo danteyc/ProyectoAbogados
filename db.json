@@ -1,0 +1,41 @@
+{
+  "lawyers": [
+    { "id": 1, 
+      "name": "Dante", 
+      "lastname": "Yucra",
+      "email": "renatoyucra97@gmail.com",
+      "password": "1234"
+    },
+    { "id": 2, 
+      "name": "Leonidas", 
+      "lastname": "Esteban",
+      "email": "leonidasesteban@gmail.com",
+      "password": "1234"
+    },
+    { "id": 3, 
+      "name": "Luis", 
+      "lastname": "Vergara",
+      "email": "luisvergara@gmail.com",
+      "password": "1234"
+    },
+    { "id": 4, 
+      "name": "Fabio", 
+      "lastname": "Salinas",
+      "email": "fabiosalinas@gmail.com",
+      "password": "1234"
+    },
+    { "id": 5, 
+      "name": "Eduardo", 
+      "lastname": "Copaja",
+      "email": "eduardocopaja@gmail.com",
+      "password": "1234"
+    },
+    { "id": 6, 
+      "name": "Pedro", 
+      "lastname": "Castillo",
+      "email": "pedrocastillo@gmail.com",
+      "password": "1234"
+    }
+    ],
+  "comments": [{ "id": 1, "body": "some comment", "postId": 1 }]
+}

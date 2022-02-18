@@ -1,6 +1,6 @@
 .main-search {
   background-color: #0c55c3;
-  min-height: 600px;
+  min-height: 500px;
   position: relative;
   .background {
     .background-img {
@@ -23,12 +23,45 @@
       position: relative;
       color: #fff;
       font-size: 2.5rem;
-      margin-bottom: 0;
+      line-height: 1.1;
+      font-size: 2.4rem;
+      margin-bottom: 1rem;
     }
     h2{
       position: relative;
       color: #fff;
       opacity: .8;
     }
+    .form-item{
+      width: 250px;
+    }
   }
+}
+
+@media (max-width:760px){
+  .main-search {
+    .background{
+      .background-img{
+        background-image: linear-gradient(rgba(12, 85, 195, 0.7), rgba(12, 85, 195, 0.7)),url('../../assets/images/homepage-lawyer.png');
+        background-position: 85% bottom;
+        background-position-y: top;
+        background-size: 200%;
+        height: auto;
+      }
+    }
+    .search-info{
+      .search-form{
+        display: block;
+      }
+      .form-item{
+        width: 100%;
+        margin-bottom: 0.8em;
+      }
+      .btn-search{
+        width: 100%;
+        height: 50px;
+      }
+    }
+  }
+  
 }
