@@ -16,7 +16,7 @@ h2{
     width: 70%;
 }
 .panel_derecho{
-    // width: 27%;
+    width: 27%;
 }
 .cnt-container{
     padding: 2rem 0;
@@ -30,3 +30,17 @@ h2{
     align-items: center;
     
 }
+
+@media (max-width:760px){
+    .panel_derecho{
+        display: none;
+    }
+    .panel_izquierdo{
+        width: 100%;
+    }
+    .foto{
+        display: block;
+        margin: 0 auto;
+    }
+}
+

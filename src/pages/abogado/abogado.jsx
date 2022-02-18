@@ -10,7 +10,7 @@ export function PageAbogado() {
        <div className="box">
             <div className="panel_izquierdo">          
               <div className="imagen">
-                <img src="https://www.omcabogados.com.pe/upload/abogados/main/abogado201503201726020170300.jpg" width="200px" alt="" />
+                <img className="foto" src="https://www.omcabogados.com.pe/upload/abogados/main/abogado201503201726020170300.jpg" width="200px" alt="" />
                 <h2>Dr. Nombre Apellido</h2>
                 <h3>ESPECIALIDAD</h3>
               </div>
@@ -48,11 +48,8 @@ export function PageAbogado() {
               <div className="cita">                               
                  <img src={mail} width="30px" alt="logo mail" />
                  <h2>tucorreo@mail.com</h2>                 
-              </div>
-                
-              
-            </div>
-           
+              </div>                              
+            </div>           
     </div>
     </div>
    
