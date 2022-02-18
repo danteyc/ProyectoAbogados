@@ -5,7 +5,7 @@ export function Main(props) {
 
   return (
     <main className="main">
-      <div>{children}</div>
+      {children}
     </main>
   );
 }

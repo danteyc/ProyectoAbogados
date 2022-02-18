@@ -1,0 +1,18 @@
+.perfil{
+    display: flex;
+    justify-content:space-between;
+    .perfil-left{
+        width: 28%;
+        .foto-perfil{
+            figure{
+                img{
+                    display: block;
+                    width: 100%;
+                }
+            }
+        }
+    }
+    .perfil-right{
+        width: 70%;
+    }
+}

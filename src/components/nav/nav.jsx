@@ -19,7 +19,7 @@ export function Nav() {
         <NavLink to="/editar-perfil">Editar Perfil</NavLink>
       </Menu.Item>
       <Menu.Item key="2">
-        <NavLink to="/iniciar-sesion"
+        <NavLink to="/"
         onClick={(e)=>{
           e.preventDefault();
           dispatch({
@@ -34,6 +34,8 @@ export function Nav() {
       </Menu.Item>
     </Menu>
   );
+  
+  
   return (
     <nav>
       <ul>
@@ -41,10 +43,7 @@ export function Nav() {
           <NavLink to="/contacto">Contacto</NavLink>
         </li>
         <li>
-          <NavLink to="/lista-abogados">Lista</NavLink>
-        </li>
-        <li>
-          <NavLink to="/abogado">Abogado</NavLink>
+          <NavLink to="/abogados/todos/todos">Abogados</NavLink>
         </li>
         <li>
           <NavLink to="/registro">Registro</NavLink>

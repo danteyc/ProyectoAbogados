@@ -4,7 +4,6 @@ import {
   Route,
 } from "react-router-dom";
 import "antd/dist/antd.min.css"
-import './App.css';
 import { Header } from "./components/header/header";
 import { Main } from "./components/main/main";
 import { Footer } from "./components/footer/footer";
@@ -33,7 +32,7 @@ function App() {
                 <Route path="/abogado/:id">
                   <PageAbogado />
                 </Route>
-                <Route path="/lista-abogados">
+                <Route path="/abogados/:ciudad/:especialidad">
                   <PageListaAbogados />
                 </Route>
                 <Route path="/registro">
