@@ -2,6 +2,7 @@ import "./abogado.scss";
 import { StarOutlined,StarFilled } from "@ant-design/icons";
 import wasap from "../../assets/images/wasap2.png"
 import ubicacion from "../../assets/images/ubicacion.png"
+import mail from "../../assets/images/mail.jpg"
 
 export function PageAbogado() {
   return (
@@ -43,6 +44,10 @@ export function PageAbogado() {
               <div className="cita">                               
                  <img src={ubicacion} width="30px" alt="logo ubicacion" />
                  <h2>Lima</h2>                 
+              </div>
+              <div className="cita">                               
+                 <img src={mail} width="30px" alt="logo mail" />
+                 <h2>tucorreo@mail.com</h2>                 
               </div>
                 
               
