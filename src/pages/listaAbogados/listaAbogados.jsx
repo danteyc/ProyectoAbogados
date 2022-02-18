@@ -1,16 +1,24 @@
 import { Link } from "react-router-dom";
 import "./listaAbogados.scss";
+import { StarOutlined, StarFilled } from "@ant-design/icons";
 function CardLawyer(props) {
-  const { image, name, lastname, description } = props;
-
+  const { image, name, lastname } = props;
   return (
-    <div className="card-lawyer">
-      <img className="img-fluid" src={image} alt={`${name} ${lastname}`} />
+    <div className="card-abogado">
+      <img className="img-abogado" src={image} alt={`${name} ${lastname}`} />
       <div className="card-lawyer__text">
         <h2>
           {name} {lastname}
         </h2>
-        <p>{description}</p>
+        <h3>Ciudad : Lima</h3>
+        <h3>Especialidad : Comercial</h3>
+        <div>
+          <StarFilled className="star" />
+          <StarFilled className="star" />
+          <StarFilled className="star" />
+          <StarFilled className="star" />
+          <StarOutlined className="star" />
+        </div>
       </div>
     </div>
   );
@@ -21,44 +29,63 @@ export function PageListaAbogados() {
     {
       id: 1,
       image:
-        "https://mexico.unir.net/wp-content/uploads/2021/03/abogado-litigante.jpg",
+        "https://cdn.pixabay.com/photo/2020/03/18/15/42/right-4944546__340.jpg",
       name: "Juan",
-      lastname: "Perez",
+      lastname: "Gutierrez",
       description: "Abogado penalista de lima",
     },
     {
       id: 2,
       image:
-        "https://mexico.unir.net/wp-content/uploads/2021/03/abogado-litigante.jpg",
+        "https://cdn.pixabay.com/photo/2019/12/18/13/07/right-4703938__340.jpg",
       name: "Sebastian",
       lastname: "Ramirez",
-      description: "Abogado penalista de lima",
+      description: "Abogado Laboral de Arequipa",
     },
     {
       id: 3,
       image:
-        "https://mexico.unir.net/wp-content/uploads/2021/03/abogado-litigante.jpg",
-      name: "Juan",
-      lastname: "Perez",
-      description: "Abogado penalista de lima",
+        "https://cdn.pixabay.com/photo/2019/12/18/13/08/right-4703943__340.jpg",
+      name: "Carla",
+      lastname: "Maldonado",
+      description: "Abogado de Familia de Piura",
     },
     {
       id: 4,
       image:
-        "https://mexico.unir.net/wp-content/uploads/2021/03/abogado-litigante.jpg",
-      name: "Sebastian",
+
+        "https://cdn.pixabay.com/photo/2020/12/05/14/08/man-5806011__340.jpg",
+      name: "Roberto",
       lastname: "Ramirez",
-      description: "Abogado penalista de lima",
+      description: "Abogado Tributarista de lima",
+    },
+    {
+      id: 5,
+      image:
+
+        " https://cdn.pixabay.com/photo/2019/04/13/16/45/thinking-4125016__340.jpg",
+      name: "Fernando",
+      lastname: "Peralta",
+      description: "Abogado Comercial  de lima",
+    },
+    {
+      id: 6,
+      image:
+
+        "https://cdn.pixabay.com/photo/2019/12/18/13/05/right-4703926__340.jpg",
+      name: "Buffete",
+      lastname: "Carbajal Daza",
+      description: "Abogados Asociados de lima",
     },
   ];
 
   return (
     <div class="page-lista-abogados">
-      <div className="container pt-3 pb-3">
-        <h1 className="mb-4">ABOGADOS</h1>
-        <div className="row">
+      <div className="container">
+        <h1>ABOGADOS</h1>
+        <div className="cards-abogados">
           {lawyers.map((lawyer) => (
-            <Link className="col col-4" to={`/abogado/${lawyer.id}`}>
+            <Link className="card" to={`/abogado/${lawyer.id}`}>
               <CardLawyer
                 image={lawyer.image}
                 name={lawyer.name}
