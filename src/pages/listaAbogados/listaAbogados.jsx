@@ -8,7 +8,7 @@ function CardLawyer(props) {
       <img className="img-abogado" src={image} alt={`${name} ${lastname}`} />
       <div className="card-lawyer__text">
         <h2>
-          {name} {lastname}
+          {name} {lastname} 
         </h2>
         <h3>Ciudad : Lima</h3>
         <h3>Especialidad : Comercial</h3>

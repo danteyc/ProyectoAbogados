@@ -1,7 +1,12 @@
 .cards-abogados{
     display:grid;
-    grid-template-columns: repeat(3,1fr);
     grid-gap: 1em;
+    grid-auto-flow: dense;
+    grid-auto-rows: 22rem;
+   grid-template-columns: repeat(auto-fill, minmax(min(100%,25rem),1fr));
+  /*  grid-template-columns: repeat(auto-fill, minmax(15rem,1fr));*/
+   
+    
     .card-abogado{
         border: 1px solid rgb(0, 17, 255) ; 
         background-color: rgba(207, 233, 238, 0.808); 
@@ -14,4 +19,10 @@
         margin:0 auto;
         display:block;
     }
+    .card-lawyer__text{
+        h2{
+            text-align: center;
+        }
+    }
+
 }
