@@ -1,13 +1,11 @@
-import "./main.scss"
+import "./main.scss";
 
 export function Main(props) {
-    const {
-      children
-    } = props;
-  
-    return (
+  const { children } = props;
+
+  return (
     <main className="main">
-      {children}
-    </main>);
-  }
-  
+      <div>{children}</div>
+    </main>
+  );
+}

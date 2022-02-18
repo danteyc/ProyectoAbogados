@@ -13,21 +13,19 @@ import { PageAbogado } from "./pages/abogado/abogado";
 import { PageListaAbogados } from "./pages/listaAbogados/listaAbogados";
 import { PageRegistro } from "./pages/registro/registro";
 import { PageContacto } from "./pages/contacto/contacto";
-
 import "./assets/style/main.scss";
-
 
 function App() {
   return (
     <BrowserRouter>
-      <div className='wrapper'>
-        <Header/>
+      <div className="wrapper">
+        <Header />
         <Main>
           <Switch>
             <Route exact path="/">
               <PageHome />
             </Route>
-            <Route path="/abogado">
+            <Route path="/abogado/:id">
               <PageAbogado />
             </Route>
             <Route path="/lista-abogados">
@@ -37,15 +35,13 @@ function App() {
               <PageRegistro />
             </Route>
             <Route path="/contacto">
-              <PageContacto/>
+              <PageContacto />
             </Route>
           </Switch>
         </Main>
-        <Footer/>
+        <Footer />
       </div>
     </BrowserRouter>
-
-
   );
 }
 
