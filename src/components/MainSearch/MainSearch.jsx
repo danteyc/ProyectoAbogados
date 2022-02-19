@@ -2,10 +2,27 @@ import "./mainsearch.scss";
 import { Form, Button, Select } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import { useHistory } from "react-router-dom";
-
+import axios from "axios";
+import { useState,useEffect } from "react";
 const { Option } = Select;
 
+
 export function MainSearch() {
+  const [cities,setCities]= useState([]);
+  const [specialties,setSpecialties]= useState([]);
+  useEffect(()=>{
+    axios.get("http://localhost:3000/lawyers")
+    .then((response)=>{
+      const citiesN = [] ;
+      const specialtiesN = [];
+      response.data.forEach((lawyer)=> {
+        citiesN.push(lawyer.city);
+        specialtiesN.push(lawyer.specialty)
+      });
+      setCities([...new Set(citiesN)]);
+      setSpecialties([...new Set(specialtiesN)]);
+    });
+  },[])
   const history = useHistory();
   const onFinish = (values) => {
     const city = values.city;
@@ -42,9 +59,9 @@ export function MainSearch() {
                 className="form-item"
                 showSearch
               >
-                <Option value="Penal">Penal</Option>
-                <Option value="Registral">Registral</Option>
-                <Option value="Laboral">Laboral</Option>
+                {specialties.map((specialty)=>(
+                  <Option value={specialty}>{specialty}</Option>
+                ))}
               </Select>
             </Form.Item>
             <Form.Item  name="city">
@@ -54,9 +71,9 @@ export function MainSearch() {
                 className="form-item"
                 showSearch
               >
-                <Option value="Tacna">Tacna</Option>
-                <Option value="Lima">Lima</Option>
-                <Option value="Trujillo">Trujillo</Option>
+                {cities.map((city)=>(
+                  <Option value={city}>{city}</Option>
+                ))}
               </Select>
             </Form.Item>
             <Form.Item>
