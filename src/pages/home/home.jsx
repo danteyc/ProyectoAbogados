@@ -38,9 +38,8 @@ export function PageHome() {
             </div>
             <div className="benefit-description">
             Los mejores resultados legales siempre llegarán a ti cuando estás siendo representado por un equipo protocolar. Nuestro estudio jurídico es ideal para tus casos, pues nos especializamos en la defensa de personas naturales y jurídicas. No solo tendrás la oportunidad de resolver disputas, sino que nosotros te proporcionamos asesoría permanente para que aproveches oportunidades de negocios.
+          
 
-
-            Sin importar la gravedad de tu caso, siempre actuaremos con sensibilidad y discreción en cuanto a tu información. Para que te sientas más relajado, te invitamos a charlar con nosotros en los estudios. Contamos con una infraestructura minimalista en las sedes de Perú, de forma que nos localices con rapidez y te familiarices con el espacio laboral.
             </div>
           </div>
         </div>
