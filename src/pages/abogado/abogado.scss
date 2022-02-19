@@ -18,6 +18,9 @@
 }
 .panel_derecho{
     width: 27%;
+    .cita_dato{
+        font-size: 1.2rem;
+    }
 }
 .cnt-container{
     padding: 2rem 0;
@@ -29,19 +32,32 @@
 .cita{
     display: flex;
     align-items: center;
-    
 }
-
 @media (max-width:760px){
     .panel_derecho{
         display: none;
+        
     }
     .panel_izquierdo{
         width: 100%;
+       
     }
     .foto{
         display: block;
         margin: 0 auto;
+    }
+    .imagen{
+        text-align: center;
+    }
+    .descripcion{
+        text-align: center;
+    }
+    
+    .parrafo_descripcion{
+        text-align: center;
+    }
+    .resena{
+        text-align: center;
     }
 }
 
