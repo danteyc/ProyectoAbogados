@@ -40,7 +40,7 @@
       "tuition number": "12222",
       "document": "45556588",
       "specialty": "Penal",
-      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0q22R0JyS1a8JOwRRA2Pe-NcH7F1-E-MeqpAfCO9eI5s07fZYKjlELjF0T7SzBy3894I&usqp=CAU"
+      "photo": "https://i0.wp.com/fihsabogados.cl/wp-content/uploads/2016/10/sergio-huidobro-nuevo-Manuel-Figueroa-300x300-1-1.jpg?w=1100&ssl=1"
     },
     {
       "id": 4,
@@ -54,7 +54,7 @@
       "tuition number": "14433",
       "document": "55566875",
       "specialty": "Laboral",
-      "photo": "https://www.google.com/url?sa=i&url=https%3A%2F%2Famprimoabogados.com%2Fes%2Fabogados%2Feduardo-barboza&psig=AOvVaw3SMA3FcL1l77CoOUQvd3nL&ust=1645250085699000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJC1jv7IiPYCFQAAAAAdAAAAABAO"
+      "photo": "https://i2.wp.com/estadodiario.com/wp-content/uploads/2019/04/cristian-casanova-NDI-abogados-300x300.jpg?resize=300%2C300"
     },
     {
       "id": 5,
@@ -290,6 +290,7 @@
       "gender": "Masculino",
       "phone": "999412033",
       "city": "Amazonas",
+      "photo":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdHZ0mHdOmGV7x2oaAtSi01PwENOzOeP47_g&usqp=CAU",
       "specialty": "DerechoConstitucional",
       "password": "123456",
       "passwordconfirm": "123456",
@@ -306,6 +307,7 @@
       "gender": "Masculino",
       "phone": "784457189",
       "city": "Amazonas",
+      "photo": "https://amprimoabogados.com/images/staff/EBarboza.jpg",
       "specialty": "DerechoConstitucional",
       "password": "123456",
       "passwordconfirm": "123456",

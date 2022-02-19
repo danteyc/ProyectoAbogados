@@ -33,8 +33,6 @@ export function PageRegistro() {
         layout="vertical"
         className="form-register"
         autoComplete="off"
-        //labelCol={{ span: 6 }}//
-       // wrapperCol={{ span: 12 }}//
         onFinish={(values) => {
           postData(values);
         }}
