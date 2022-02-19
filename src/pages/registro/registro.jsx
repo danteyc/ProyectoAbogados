@@ -36,7 +36,7 @@ export function PageRegistro() {
         onFinish={(values) => {
           postData(values);
         }}
-        onFinishFailes={(error) => {
+        onFinishFailed={(error) => {
           console.log({ error });
         }}
       >
