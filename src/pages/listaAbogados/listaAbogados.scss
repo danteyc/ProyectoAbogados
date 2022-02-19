@@ -3,10 +3,18 @@
     grid-gap: 1em;
     grid-template-columns: repeat(auto-fill, minmax(min(75%, 20rem),1fr));
      .card-abogado{
-        border: 1px solid rgb(0, 17, 255) ; 
-        background-color: rgba(207, 233, 238, 0.808); 
+        padding: 1rem;
+        border: 2px solid #0c55c3;
+        background-color: rgb(255 255 255);
+        box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%);
         &:hover{
-            background-color: rgba(159, 188, 199, 0.493);
+            background-color: rgb(237 237 237);
+        }
+        h2{
+            color: #0c55c3;
+        }
+        .specialty{
+            margin-bottom: 0.5rem;
         }
     }
     .img-abogado{
@@ -21,4 +29,20 @@
         font-size: small;
     }
 
+}
+.cnt-list{
+    padding-top: 1rem;
+    h1{
+        color: #0c55c3;
+    }
+    .filter-abogados{
+        display: flex;
+        margin-bottom: 1rem;
+        span{
+            color: #0c55c3;
+        }
+        h3:first-child{
+            margin-right: 0.5rem;
+        }
+    }
 }

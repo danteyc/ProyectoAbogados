@@ -1,4 +1,4 @@
-nav{
+.nav{
     ul{
         display:flex;
         list-style-type: none;
@@ -16,7 +16,7 @@ nav{
 }
 
 @media (max-width:550px){
-    nav{
+    .nav{
         display: none;
         position: fixed;
         top: 60px;

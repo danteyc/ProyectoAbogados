@@ -16,7 +16,7 @@ function CardLawyer(props) {
           {name} {lastname} 
         </h2>
         <h3>Ciudad : {city}</h3>
-        <h3>Especialidad : {specialty}</h3>
+        <h3 className="specialty">Especialidad : {specialty}</h3>
         <div>
           <StarFilled className="star" />
           <StarFilled className="star" />
@@ -51,12 +51,14 @@ export function PageListaAbogados() {
     .then(response=>{
       setLawyers(comprobar(response.data,ciudad,especialidad));
     })
-  }, []);
+  }, [ciudad,especialidad]);
   return (
     <div className="page-lista-abogados">
-      <div className="container">
-        <h1>ABOGADOS</h1>
-        <h3>{ciudad}</h3><h3>{especialidad}</h3>
+      <div className="container cnt-list">
+        <h1>Abogados</h1>
+        <div className="filter-abogados">
+          <h3><span>Ciudad:</span> {ciudad}</h3><h3><span>Especialidad:</span> {especialidad}</h3>
+        </div>
         <div className="cards-abogados">
           {lawyers.map((lawyer,k) => (
             <Link key={k} className="card" to={`/abogado/${lawyer.id}`}>

@@ -42,7 +42,6 @@ export function Nav() {
     </Menu>
   );
   
-  
   return (
     <nav className="nav">
       <ul>

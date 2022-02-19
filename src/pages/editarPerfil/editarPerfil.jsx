@@ -3,7 +3,7 @@ import { UploadOutlined } from '@ant-design/icons';
 
 const props = {
   name: 'file',
-  action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+  action: 'https://run.mocky.io/v3/8044c585-5907-40ad-8b40-e3a3b4957b13',
   headers: {
     authorization: 'authorization-text',
   },
