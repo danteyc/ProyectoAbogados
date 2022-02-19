@@ -113,7 +113,6 @@ export function PageRegistro() {
               required: true,
               message: "Por favor ingresa tu número de DNI",
             },
-            { whitespace: true },
             { max: 8 },
           ]}
           hasFeedback
@@ -123,6 +122,22 @@ export function PageRegistro() {
       
         </Col>
         </Row>
+
+        <Form.Item
+          name="phone"
+          label="Celular"
+          rules={[
+            {
+              required: true,
+              message: "Por favor ingresa tu número de celular",
+            },
+            { max: 9},
+          ]}
+          hasFeedback
+        >
+          <Input placeholder="ingresa tu número de celular" />
+        </Form.Item>
+
         <Form.Item
           name="email"
           label="Correo electronico"
