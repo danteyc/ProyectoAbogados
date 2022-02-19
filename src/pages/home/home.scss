@@ -33,5 +33,6 @@
 }
 .benefit-description{
  width: 100%;
- -ms-text-justify: auto;
+ /*-ms-text-justify: auto;*/
+ text-align: justify;
 }
