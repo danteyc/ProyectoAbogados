@@ -10,23 +10,25 @@ import {
   Row,
   Col
 } from "antd";
+import axios from "axios";
+import { useState,useEffect } from "react";
 
 const REGIONES = ["Amazonas","Lambayeque","Ancash","Lima","Arequipa","Loreto","Ayacucho","Madre de Dios","Apurimac","Moquegua","Cajamarca","Pasco","Cusco","Piura","Huancavelica","Puno","Huánuco","San Martin","Ica","Tacna","Junín","Tumbes","La Libertad","Ucayali"]
 export function PageRegistro() {
-  // return (
-  //     <>
-  //     <h1>Página de Registro</h1>
-  //     <form>
-  //         <input type="text" placeholder="Ingresar Nombre"></input>
-  //     </form>
-  //     </>
-  // )
+  const [data,setData]= useState({});
+  function postData(dataRegister){
+    axios.post("http://localhost:3000/lawyers",dataRegister)
+    .then((response)=>{
+      console.log("response",response);
+    })
+  }
   function onChange(e) {
     console.log(`checked = ${e.target.checked}`);
   }
   return (
-    <div className="form-container">
-      
+    <div className="container registro-container">
+      <h1>Regístrate</h1>
+      <div className="form-container">
       <Form
         layout="vertical"
         className="form-register"
@@ -34,7 +36,7 @@ export function PageRegistro() {
         //labelCol={{ span: 6 }}//
        // wrapperCol={{ span: 12 }}//
         onFinish={(values) => {
-          console.log({ values });
+          postData(values);
         }}
         onFinishFailes={(error) => {
           console.log({ error });
@@ -43,7 +45,7 @@ export function PageRegistro() {
         <Row>
         <Col span= {11} >
         <Form.Item
-          name="Nombres"
+          name="name"
           label="Nombres"
           rules={[
             {
@@ -63,7 +65,7 @@ export function PageRegistro() {
 
         <Col span={11}>
         <Form.Item
-          name="Apellidos"
+          name="lastname"
           label="Apellidos"
           rules={[
             {
@@ -82,7 +84,7 @@ export function PageRegistro() {
         <Row>
         <Col span={11}>
         <Form.Item
-          name="Nro de Colegiatura"
+          name="tuition number"
           label="Nro de colegiatura"
           rules={[
             {
@@ -104,7 +106,7 @@ export function PageRegistro() {
 
         <Col span={11}>
         <Form.Item
-          name="DNI"
+          name="document"
           label="DNI"
           rules={[
             {
@@ -122,7 +124,7 @@ export function PageRegistro() {
         </Col>
         </Row>
         <Form.Item
-          name="correo"
+          name="email"
           label="Correo electronico"
           rules={[
             {
@@ -136,7 +138,6 @@ export function PageRegistro() {
         >
           <Input placeholder="Ingresa tu correo" />
         </Form.Item>
-
         <Form.Item
           name="fecha de nacimiento"
           label="Fecha de nacimiento"
@@ -154,19 +155,17 @@ export function PageRegistro() {
             placeholder="Selecciona tu fecha de nacimiento"
           />
         </Form.Item>
-
-
-        <Form.Item name="Género" label="Género" requiredMark="optional">
+        <Form.Item name="gender" label="Género" requiredMark="optional">
           <Select placeholder="Selecciona tu género">
-            <Select.Option value="masculino">Masculino</Select.Option>
-            <Select.Option value="femenino">Femenino</Select.Option>
+            <Select.Option value="Masculino">Masculino</Select.Option>
+            <Select.Option value="Femenino">Femenino</Select.Option>
             <Select.Option value="prefieronodecirlo">
               Prefiero no decirlo
             </Select.Option>
           </Select>
         </Form.Item>
 
-        <Form.Item name="Ciudad" label="Ciudad"
+        <Form.Item name="city" label="Ciudad"
         rules={[
           {
             required: true,
@@ -187,7 +186,7 @@ export function PageRegistro() {
           </Select>
       
         </Form.Item>
-        <Form.Item name="Especialidad" label="Especialidad"
+        <Form.Item name="specialty" label="Especialidad"
         rules={[
           {
             required: true,
@@ -196,29 +195,29 @@ export function PageRegistro() {
         ]}
         >
           <Select placeholder="Selecciona tu especialidad">
-            <Select.Option value="DerechoConstitucional">
+            <Select.Option value="Constitucional">
               Derecho Constitucional
             </Select.Option>
-            <Select.Option value="DerechoAdministrativo">
+            <Select.Option value="Administrativo">
               Derecho Administrativo
             </Select.Option>
-            <Select.Option value="DerechoProcesalPenal">
-              Derecho Procesal Penal
+            <Select.Option value="Penal">
+              Derecho Penal
             </Select.Option>
-            <Select.Option value="DerechodelTrabajo">
+            <Select.Option value="Trabajo">
               Derecho del Trabajo
             </Select.Option>
-            <Select.Option value="DerechoFiscal">Derecho Fiscal</Select.Option>
-            <Select.Option value="DerechoCivilyMercantil">
+            <Select.Option value="Fiscal">Derecho Fiscal</Select.Option>
+            <Select.Option value="CivilyMercantil">
               Derecho Civil y Mercantil
             </Select.Option>
-            <Select.Option value="DerechoEmpresarial">
+            <Select.Option value="Empresarial">
               Derecho Empresarial
             </Select.Option>
-            <Select.Option value="DerechoCorporativo">
+            <Select.Option value="Corporativo">
               Derecho Corporativo
             </Select.Option>
-            <Select.Option value="DerechoInternacional">
+            <Select.Option value="Internacional">
               Derecho Internacional
             </Select.Option>
             <Select.Option value="Otro">
@@ -228,7 +227,7 @@ export function PageRegistro() {
         </Form.Item>
 
         <Form.Item
-          name="contraseña"
+          name="password"
           label="Contraseña"
           rules={[
             {
@@ -243,7 +242,7 @@ export function PageRegistro() {
         </Form.Item>
 
         <Form.Item
-          name="confirmar constraseña"
+          name="passwordconfirm"
           label="Confirmar contraseña"
           dependencies={["contraseña"]}
           rules={[
@@ -253,7 +252,7 @@ export function PageRegistro() {
             },
             ({ getFieldValue }) => ({
               validator(_, value) {
-                if (!value || getFieldValue("contraseña") === value) {
+                if (!value || getFieldValue("password") === value) {
                   return Promise.resolve();
                 }
                 return Promise.reject("Las constraseñas no coinciden");
@@ -264,9 +263,6 @@ export function PageRegistro() {
         >
           <Input.Password placeholder="Ingresa tu contraseña" />
         </Form.Item>
-
-
-
         <Form.Item
         className="form-agree"
           name="acuerdo"
@@ -292,16 +288,13 @@ export function PageRegistro() {
             Acepto los <a href="#">términos y condiciones</a>
           </Checkbox>
         </Form.Item>
-
-
-
-
         <Form.Item wrapperCol={{ span: 24 }} name="registrocompletado">
           <Button type="primary" htmlType="submit" block> 
             Registro
           </Button>
         </Form.Item>
       </Form>
+    </div>
     </div>
   );
 }

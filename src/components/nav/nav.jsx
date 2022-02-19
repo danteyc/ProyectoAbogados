@@ -4,9 +4,11 @@ import { Menu, Dropdown } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 
 export function Nav() {
+  const history = useHistory();
   const dispatch = useDispatch();
   const name = useSelector((state)=> state.name);
   const isLogin = useSelector((state)=> state.isLogin);
@@ -30,6 +32,11 @@ export function Nav() {
             type: "SET_NAME",
             payload: null,
           });
+          dispatch({
+            type: "SET_ID",
+            payload: null,
+          });
+          history.push("/iniciar-sesion")
         }}>Cerrar Sesión</NavLink>
       </Menu.Item>
     </Menu>
@@ -37,7 +44,7 @@ export function Nav() {
   
   
   return (
-    <nav>
+    <nav className="nav">
       <ul>
         <li>
           <NavLink to="/contacto">Contacto</NavLink>

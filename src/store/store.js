@@ -35,7 +35,7 @@ function mainReducer(state = initialState, action) {
     case "SET_ID":{
       return{
         ...state,
-        data: action.payload,
+        id: action.payload,
       };
     }
     default:{

@@ -42,9 +42,9 @@ export function MainSearch() {
                 className="form-item"
                 showSearch
               >
-                <Option value="penal">Penal</Option>
-                <Option value="registral">Registral</Option>
-                <Option value="laboral">Laboral</Option>
+                <Option value="Penal">Penal</Option>
+                <Option value="Registral">Registral</Option>
+                <Option value="Laboral">Laboral</Option>
               </Select>
             </Form.Item>
             <Form.Item  name="city">
@@ -54,9 +54,9 @@ export function MainSearch() {
                 className="form-item"
                 showSearch
               >
-                <Option value="tacna">Tacna</Option>
-                <Option value="lima">Lima</Option>
-                <Option value="trujillo">Trujillo</Option>
+                <Option value="Tacna">Tacna</Option>
+                <Option value="Lima">Lima</Option>
+                <Option value="Trujillo">Trujillo</Option>
               </Select>
             </Form.Item>
             <Form.Item>

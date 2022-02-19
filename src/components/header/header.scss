@@ -9,5 +9,19 @@ header{
     height: 60px;
 }
 .header-logo{
-    color: white
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+}
+.menu-button{
+    display: none;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+@media (max-width:550px){
+    .menu-button{
+        display: block;
+    }
 }

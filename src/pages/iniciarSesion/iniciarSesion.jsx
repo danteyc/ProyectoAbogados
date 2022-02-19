@@ -13,7 +13,6 @@ export function PageIniciarSesion() {
   function userExist(email,password,users){
     const actualUser = users.filter((dataUser) => dataUser.email === email && dataUser.password === password);
     if (actualUser.length > 0){
-      console.log("EXISTE USUARIO",actualUser);
       dispatch({
         type: "SET_ID",
         payload: actualUser[0].id,

@@ -14,6 +14,7 @@ import { PageRegistro } from "./pages/registro/registro";
 import { PageIniciarSesion } from "./pages/iniciarSesion/iniciarSesion";
 import { PageContacto } from "./pages/contacto/contacto";
 import { PagePerfil } from "./pages/perfil/perfil";
+import { PageEditarPerfil } from "./pages/editarPerfil/editarPerfil";
 import "./assets/style/main.scss";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
@@ -46,6 +47,9 @@ function App() {
                 </Route>
                 <Route path="/perfil">
                   <PagePerfil/>
+                </Route>
+                <Route path="/editar-perfil">
+                  <PageEditarPerfil/>
                 </Route>
               </Switch>
             </Main>

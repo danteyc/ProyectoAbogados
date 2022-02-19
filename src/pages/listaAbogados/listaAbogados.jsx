@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
 import "./listaAbogados.scss";
 import { StarOutlined, StarFilled } from "@ant-design/icons";
+import { useEffect,useState } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+
+
 function CardLawyer(props) {
-  const { image, name, lastname } = props;
+  const { image, name, lastname,city,specialty } = props;
   return (
     <div className="card-abogado">
       <img className="img-abogado" src={image} alt={`${name} ${lastname}`} />
@@ -10,8 +15,8 @@ function CardLawyer(props) {
         <h2>
           {name} {lastname} 
         </h2>
-        <h3>Ciudad : Lima</h3>
-        <h3>Especialidad : Comercial</h3>
+        <h3>Ciudad : {city}</h3>
+        <h3>Especialidad : {specialty}</h3>
         <div>
           <StarFilled className="star" />
           <StarFilled className="star" />
@@ -25,72 +30,42 @@ function CardLawyer(props) {
 }
 
 export function PageListaAbogados() {
-  const lawyers = [
-    {
-      id: 1,
-      image:
-        "https://cdn.pixabay.com/photo/2020/03/18/15/42/right-4944546__340.jpg",
-      name: "Juan",
-      lastname: "Gutierrez",
-      description: "Abogado penalista de lima",
-    },
-    {
-      id: 2,
-      image:
-        "https://cdn.pixabay.com/photo/2019/12/18/13/07/right-4703938__340.jpg",
-      name: "Sebastian",
-      lastname: "Ramirez",
-      description: "Abogado Laboral de Arequipa",
-    },
-    {
-      id: 3,
-      image:
-        "https://cdn.pixabay.com/photo/2019/12/18/13/08/right-4703943__340.jpg",
-      name: "Carla",
-      lastname: "Maldonado",
-      description: "Abogado de Familia de Piura",
-    },
-    {
-      id: 4,
-      image:
-
-        "https://cdn.pixabay.com/photo/2020/12/05/14/08/man-5806011__340.jpg",
-      name: "Roberto",
-      lastname: "Ramirez",
-      description: "Abogado Tributarista de lima",
-    },
-    {
-      id: 5,
-      image:
-
-        " https://cdn.pixabay.com/photo/2019/04/13/16/45/thinking-4125016__340.jpg",
-      name: "Fernando",
-      lastname: "Peralta",
-      description: "Abogado Comercial  de lima",
-    },
-    {
-      id: 6,
-      image:
-
-        "https://cdn.pixabay.com/photo/2019/12/18/13/05/right-4703926__340.jpg",
-      name: "Buffete",
-      lastname: "Carbajal Daza",
-      description: "Abogados Asociados de lima",
-    },
-  ];
-
+  const {ciudad,especialidad} = useParams();
+  const [lawyers,setLawyers]= useState([]);
+  function comprobar(abogados,ciudad,especialidad){
+    let abogadosFiltrados = [];
+    console.log(abogadosFiltrados);
+    if (ciudad==="todos" && especialidad ==="todos"){
+      abogadosFiltrados= abogados;
+    } else if (ciudad==="todos"){
+      abogadosFiltrados = abogados.filter((abogado) => abogado.specialty === especialidad);
+    } else if (especialidad==="todos"){
+      abogadosFiltrados = abogados.filter((abogado) => abogado.city === ciudad);
+    } else{
+      abogadosFiltrados = abogados.filter((abogado) => abogado.city === ciudad && abogado.specialty === especialidad);
+    }
+    return abogadosFiltrados;
+  }
+  useEffect(() => {
+    axios.get("http://localhost:3000/lawyers")
+    .then(response=>{
+      setLawyers(comprobar(response.data,ciudad,especialidad));
+    })
+  }, []);
   return (
-    <div class="page-lista-abogados">
+    <div className="page-lista-abogados">
       <div className="container">
         <h1>ABOGADOS</h1>
+        <h3>{ciudad}</h3><h3>{especialidad}</h3>
         <div className="cards-abogados">
-          {lawyers.map((lawyer) => (
-            <Link className="card" to={`/abogado/${lawyer.id}`}>
+          {lawyers.map((lawyer,k) => (
+            <Link key={k} className="card" to={`/abogado/${lawyer.id}`}>
               <CardLawyer
-                image={lawyer.image}
+                image={lawyer.photo}
                 name={lawyer.name}
                 lastname={lawyer.lastname}
-                description={lawyer.description}
+                city={lawyer.city}
+                specialty={lawyer.specialty}
               />
             </Link>
           ))}

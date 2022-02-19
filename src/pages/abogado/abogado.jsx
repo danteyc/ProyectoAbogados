@@ -3,16 +3,30 @@ import { StarOutlined,StarFilled } from "@ant-design/icons";
 import wasap from "../../assets/images/wasap2.png"
 import ubicacion from "../../assets/images/ubicacion.png"
 import mail from "../../assets/images/mail.jpg"
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { useEffect,useState } from "react";
 
 export function PageAbogado() {
+  const { id } = useParams();
+  const [lawyer,setLawyer]= useState({});
+
+
+  useEffect(() => {
+    axios.get("http://localhost:3000/lawyers")
+    .then(response=>{
+      setLawyer(response.data[id-1]);
+    })
+  }, [id]);
   return (
     <div className="container cnt-container">
        <div className="box">
             <div className="panel_izquierdo">          
               <div className="imagen">
-                <img className="foto" src="https://www.omcabogados.com.pe/upload/abogados/main/abogado201503201726020170300.jpg" width="200px" alt="" />
-                <h2>Dr. Nombre Apellido</h2>
-                <h3>ESPECIALIDAD</h3>
+                <img className="foto" src={lawyer.photo} width="200px" alt="" />
+                <h2>Dr. {lawyer.name}</h2>
+                <h3>ESPECIALIDAD: {lawyer.specialty}</h3>
+                <h3>{lawyer.gender}</h3>
               </div>
               <br>
               </br>
@@ -43,11 +57,11 @@ export function PageAbogado() {
               </div>
               <div className="cita">                               
                  <img src={ubicacion} width="30px" alt="logo ubicacion" />
-                 <h2>Lima</h2>                 
+                 <h2>{lawyer.city}</h2>                 
               </div>
               <div className="cita">                               
                  <img src={mail} width="30px" alt="logo mail" />
-                 <h2>tucorreo@mail.com</h2>                 
+                 <h2>{lawyer.email}</h2>                 
               </div>                              
             </div>           
     </div>
