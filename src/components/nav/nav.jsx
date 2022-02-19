@@ -46,9 +46,6 @@ export function Nav() {
     <nav className="nav">
       <ul>
         <li>
-          <NavLink to="/contacto">Contacto</NavLink>
-        </li>
-        <li>
           <NavLink to="/abogados/todos/todos">Abogados</NavLink>
         </li>
         <li>

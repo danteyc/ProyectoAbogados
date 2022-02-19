@@ -10,8 +10,8 @@ export function PageAbogado() {
   const [lawyer, setLawyer] = useState({});
 
   useEffect(() => {
-    axios.get("http://localhost:3000/lawyers").then((response) => {
-      setLawyer(response.data[id - 1]);
+    axios.get(`http://localhost:3000/lawyers/${id}`).then((response) => {
+      setLawyer(response.data);
     });
   }, [id]);
   return (

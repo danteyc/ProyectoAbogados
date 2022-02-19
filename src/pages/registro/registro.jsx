@@ -12,9 +12,11 @@ import {
 } from "antd";
 import axios from "axios";
 import { useState,useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 const REGIONES = ["Amazonas","Lambayeque","Ancash","Lima","Arequipa","Loreto","Ayacucho","Madre de Dios","Apurimac","Moquegua","Cajamarca","Pasco","Cusco","Piura","Huancavelica","Puno","Huánuco","San Martin","Ica","Tacna","Junín","Tumbes","La Libertad","Ucayali"]
 export function PageRegistro() {
+  const history = useHistory();
   const [data,setData]= useState({});
   function postData(dataRegister){
     axios.post("http://localhost:3000/lawyers",dataRegister)
@@ -35,6 +37,8 @@ export function PageRegistro() {
         autoComplete="off"
         onFinish={(values) => {
           postData(values);
+          alert("Usuario registrado");
+          history.push("/iniciar-sesion");
         }}
         onFinishFailed={(error) => {
           console.log({ error });
