@@ -10,10 +10,10 @@ export function PageHome() {
         <div className="benefits">
           <div className="benefit">
             <div className="benefit-title">
-              <SearchOutlined className="icon" /> Encuentra tu especialista
+              <SearchOutlined className="icon" /> Quienes somos
             </div>
             <div className="benefit-description">
-              Las opiniones reales de miles de pacientes te ayudarán a tomar siempre la mejor decisión.
+             Integrado por profesionales con un alto nivel de especialización en diversas áreas del derecho y con un conocimiento profundo de los sectores económicos en los que se desenvuelven, lo cual nos permite brindar un servicio legal que se integra perfectamente con las estrategias empresariales de nuestros clientes.
             </div>
           </div>
           <div className="benefit">
@@ -21,7 +21,7 @@ export function PageHome() {
               <ScheduleOutlined className="icon" /> Agenda tu cita
             </div>
             <div className="benefit-description">
-              Las opiniones reales de miles de pacientes te ayudarán a tomar siempre la mejor decisión.
+            Si tienes una consulta que hacer, no dudes en llamarnos a través del número telefónico del despacho +51949911376. Nuestra asesora encargada estará feliz de atenderte y de introducirte al mundo de representación legal. La alternativa es escribirnos por WhatsApp en horarios matutinos y vespertinos. Recuerda identificarte y explicar tu caso para que te respondamos con puntualidad.
             </div>
           </div>
           <div className="benefit">
@@ -29,15 +29,18 @@ export function PageHome() {
               <SearchOutlined className="icon" /> Encuentra tu especialista
             </div>
             <div className="benefit-description">
-              Las opiniones reales de miles de pacientes te ayudarán a tomar siempre la mejor decisión.
+            El nivel de especialización de tus consejeros es un factor que define la eficacia del proceso legal. Si quieres buenos resultados, debes contratarnos. Nosotros analizamos tu caso y decidimos quiénes son los profesionales más preparados para ayudarte, de forma que la solución se dé con rapidez. Lee más acerca de los tipos de abogados que trabajan en nuestro despacho:
             </div>
           </div>
           <div className="benefit">
             <div className="benefit-title">
-              <SearchOutlined className="icon" /> Encuentra tu especialista
+              <SearchOutlined className="icon" /> Mision-Vision
             </div>
             <div className="benefit-description">
-              Las opiniones reales de miles de pacientes te ayudarán a tomar siempre la mejor decisión.
+            Los mejores resultados legales siempre llegarán a ti cuando estás siendo representado por un equipo protocolar. Nuestro estudio jurídico es ideal para tus casos, pues nos especializamos en la defensa de personas naturales y jurídicas. No solo tendrás la oportunidad de resolver disputas, sino que nosotros te proporcionamos asesoría permanente para que aproveches oportunidades de negocios.
+
+
+            Sin importar la gravedad de tu caso, siempre actuaremos con sensibilidad y discreción en cuanto a tu información. Para que te sientas más relajado, te invitamos a charlar con nosotros en los estudios. Contamos con una infraestructura minimalista en las sedes de Perú, de forma que nos localices con rapidez y te familiarices con el espacio laboral.
             </div>
           </div>
         </div>
