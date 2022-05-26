@@ -1,28 +1,31 @@
 import { Link } from "react-router-dom";
 import "./listaAbogados.scss";
-import { StarOutlined, StarFilled } from "@ant-design/icons";
-import { useEffect,useState } from "react";
-import axios from "axios";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
+import { getLawyers } from "../../api/getLawyers";
+import ProfilePhoto from "../../assets/images/profile.webp";
+import { Rate } from "antd";
 
 function CardLawyer(props) {
-  const { image, name, lastname,city,specialty } = props;
+  const { image, name, lastname, city, specialty, stars } = props;
   return (
     <div className="card-abogado">
-      <img className="img-abogado" src={image} alt={`${name} ${lastname}`} />
+      <img
+        src={`${process.env.REACT_APP_PATH_FILES}/${image}`}
+        onError={({ currentTarget }) => {
+          currentTarget.onerror = null;
+          currentTarget.src = ProfilePhoto;
+        }}
+        className="img-abogado"
+      />
       <div className="card-lawyer__text">
         <h2>
-          {name} {lastname} 
+          {name} {lastname}
         </h2>
         <h3>Ciudad : {city}</h3>
         <h3 className="specialty">Especialidad : {specialty}</h3>
         <div>
-          <StarFilled className="star" />
-          <StarFilled className="star" />
-          <StarFilled className="star" />
-          <StarFilled className="star" />
-          <StarOutlined className="star" />
+          <Rate value={stars} className="star" />
         </div>
       </div>
     </div>
@@ -30,44 +33,43 @@ function CardLawyer(props) {
 }
 
 export function PageListaAbogados() {
-  const {ciudad,especialidad} = useParams();
-  const [lawyers,setLawyers]= useState([]);
-  function comprobar(abogados,ciudad,especialidad){
-    let abogadosFiltrados = [];
-    console.log(abogadosFiltrados);
-    if (ciudad==="todos" && especialidad ==="todos"){
-      abogadosFiltrados= abogados;
-    } else if (ciudad==="todos"){
-      abogadosFiltrados = abogados.filter((abogado) => abogado.specialty === especialidad);
-    } else if (especialidad==="todos"){
-      abogadosFiltrados = abogados.filter((abogado) => abogado.city === ciudad);
-    } else{
-      abogadosFiltrados = abogados.filter((abogado) => abogado.city === ciudad && abogado.specialty === especialidad);
-    }
-    return abogadosFiltrados;
-  }
+  const [abogados, setAbogados] = useState([]);
+  const { ciudad, especialidad } = useParams();
   useEffect(() => {
-    axios.get("http://localhost:3000/lawyers")
-    .then(response=>{
-      setLawyers(comprobar(response.data,ciudad,especialidad));
-    })
-  }, [ciudad,especialidad]);
+    if (ciudad === "todos" && especialidad === "todos") {
+      getLawyers().then((data) => {
+        setAbogados(data.data.data);
+      });
+    } else if (ciudad === "todos") {
+      // abogadosFiltrados = abogados.filter((abogado) => abogado.specialty === especialidad);
+    } else if (especialidad === "todos") {
+      // abogadosFiltrados = abogados.filter((abogado) => abogado.city === ciudad);
+    } else {
+      // abogadosFiltrados = abogados.filter((abogado) => abogado.city === ciudad && abogado.specialty === especialidad);
+    }
+  }, [ciudad, especialidad]);
   return (
     <div className="page-lista-abogados">
       <div className="container cnt-list">
         <h1>Abogados</h1>
         <div className="filter-abogados">
-          <h3><span>Ciudad:</span> {ciudad}</h3><h3><span>Especialidad:</span> {especialidad}</h3>
+          <h3>
+            <span>Ciudad:</span> {ciudad}
+          </h3>
+          <h3>
+            <span>Especialidad:</span> {especialidad}
+          </h3>
         </div>
         <div className="cards-abogados">
-          {lawyers.map((lawyer,k) => (
-            <Link key={k} className="card" to={`/abogado/${lawyer.id}`}>
+          {abogados.map((abogado, k) => (
+            <Link key={k} className="card" to={`/abogado/${abogado?.id}`}>
               <CardLawyer
-                image={lawyer.photo}
-                name={lawyer.name}
-                lastname={lawyer.lastname}
-                city={lawyer.city}
-                specialty={lawyer.specialty}
+                image={abogado?.imagen}
+                name={abogado?.nombres}
+                lastname={abogado?.apellidos}
+                city={abogado?.ciudad.descripcion}
+                specialty={abogado?.especialidad.descripcion}
+                stars={abogado?.calificaciontotal}
               />
             </Link>
           ))}

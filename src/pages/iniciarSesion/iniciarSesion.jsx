@@ -1,53 +1,44 @@
 import { Form, Input, Button, Checkbox } from "antd";
-import "./iniciarSesion.scss"
+import "./iniciarSesion.scss";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
-import { useEffect,useState } from "react";
+import { useState } from "react";
+import { login } from "../../api/login";
 
 export function PageIniciarSesion() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [data,setData]=useState({});
 
-  function userExist(email,password,users){
-    const actualUser = users.filter((dataUser) => dataUser.email === email && dataUser.password === password);
-    if (actualUser.length > 0){
-      dispatch({
-        type: "SET_ID",
-        payload: actualUser[0].id,
-      });
-      dispatch({
-        type: "SET_NAME",
-        payload: actualUser[0].name,
-      });
-      dispatch({
-        type: "SET_IS_LOGIN",
-        payload: true,
-      });
-      history.push("/perfil");
-    } else {
-      alert("No existe usuario");
-    }
-    return actualUser[0].id;
-  }
   const onFinish = (values) => {
-    console.log("Success:", values);
-    const {email,password} = values;
-    console.log(email,password);
-    userExist(email,password,data);
+    login(values)
+      .then((data) => {
+        if (data.status === 200) {
+          const { token, nombres, rol, id } = data.data;
+          console.log(data);
+          localStorage.setItem("token", token);
+          history.push("/");
+          dispatch({
+            type: "SET_ID",
+            payload: id,
+          });
+          dispatch({
+            type: "SET_NAME",
+            payload: nombres,
+          });
+          dispatch({
+            type: "SET_ROL",
+            payload: rol,
+          });
+          dispatch({
+            type: "SET_IS_LOGIN",
+            payload: true,
+          });
+        }
+      })
+      .catch((e) => {
+        console.log("error", e);
+      });
   };
-
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
-  useEffect(() => {
-    axios.get("http://localhost:3000/lawyers")
-    .then(response=>{
-      setData(response.data);
-    })
-  }, []);
-
   return (
     <div className="container cnt-login">
       <div className="form-login">
@@ -57,25 +48,32 @@ export function PageIniciarSesion() {
           wrapperCol={{ span: 24 }}
           initialValues={{ remember: true }}
           onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
           autoComplete="off"
         >
           <Form.Item
             name="email"
-            rules={[{ type: 'email', required: true, message: "Por favor introduce tu correo!" }]}
+            rules={[
+              {
+                type: "email",
+                required: true,
+                message: "Por favor introduce tu correo!",
+              },
+            ]}
           >
-            <Input placeholder="Correo Electrónico" size="large"/>
+            <Input placeholder="Correo Electrónico" size="large" />
           </Form.Item>
           <Form.Item
             name="password"
-            rules={[{ required: true, message: "Por favor pon tu contraseña!" }]}
+            rules={[
+              { required: true, message: "Por favor pon tu contraseña!" },
+            ]}
           >
-            <Input.Password placeholder="Contraseña" size="large"/>
+            <Input.Password placeholder="Contraseña" size="large" />
           </Form.Item>
           <Form.Item
             name="remember"
             valuePropName="checked"
-            wrapperCol={{ offset: 8, span: 16}}
+            wrapperCol={{ offset: 8, span: 16 }}
           >
             <Checkbox>Recuérdame</Checkbox>
           </Form.Item>

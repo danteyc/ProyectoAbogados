@@ -2,39 +2,41 @@ import "./mainsearch.scss";
 import { Form, Button, Select } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
+import { getCities } from "../../api/getCities";
+import { getSpecialties } from "../../api/getSpecialties";
+
 const { Option } = Select;
 
-
 export function MainSearch() {
-  const [cities,setCities]= useState([]);
-  const [specialties,setSpecialties]= useState([]);
-  useEffect(()=>{
-    axios.get("http://localhost:3000/lawyers")
-    .then((response)=>{
-      const citiesN = [] ;
-      const specialtiesN = [];
-      response.data.forEach((lawyer)=> {
-        citiesN.push(lawyer.city);
-        specialtiesN.push(lawyer.specialty)
+  const [cities, setCities] = useState([]);
+  const [specialties, setSpecialties] = useState([]);
+  useEffect(() => {
+    getCities()
+      .then((data) => {
+        setCities(data.data.data);
+      })
+      .catch((e) => {
+        console.log("error", e);
       });
-      setCities([...new Set(citiesN)]);
-      setSpecialties([...new Set(specialtiesN)]);
-    });
-  },[])
+    getSpecialties()
+      .then((data) => {
+        setSpecialties(data.data.data);
+      })
+      .catch((e) => {
+        console.log("error", e);
+      });
+  }, []);
   const history = useHistory();
   const onFinish = (values) => {
     const city = values.city;
     const speciality = values.speciality;
-    if (city!==undefined && speciality!== undefined){
-      history.push(`abogados/${city}/${speciality}`)
-    } else if (city!== undefined || speciality!== undefined){
-      if(city===undefined){
+    if (city !== undefined && speciality !== undefined) {
+      history.push(`abogados/${city}/${speciality}`);
+    } else if (city !== undefined || speciality !== undefined) {
+      if (city === undefined) {
         history.push(`abogados/todos/${speciality}`);
-      } else(
-        history.push(`abogados/${city}/todos`)
-      )
+      } else history.push(`abogados/${city}/todos`);
     }
   };
   return (
@@ -46,33 +48,42 @@ export function MainSearch() {
         <h1>Encuentra a tu abogado</h1>
         <h2>1200 profesionales están aquí para ayudarte</h2>
         <div className="search-box">
-          <Form 
-          name="search" 
-          onFinish={onFinish}
-          layout="inline"
-          className="search-form"
+          <Form
+            name="search"
+            onFinish={onFinish}
+            layout="inline"
+            className="search-form"
           >
-            <Form.Item name="speciality" >
+            <Form.Item name="speciality">
               <Select
                 placeholder="P. Ejm. Penal"
                 size="large"
                 className="form-item"
+                style={{ textTransform: "capitalize" }}
                 showSearch
               >
-                {specialties.map((specialty)=>(
-                  <Option value={specialty}>{specialty}</Option>
+                {specialties.map((specialty, k) => (
+                  <Option
+                    value={specialty.descripcion}
+                    key={k}
+                    style={{ textTransform: "capitalize" }}
+                  >
+                    {specialty.descripcion}
+                  </Option>
                 ))}
               </Select>
             </Form.Item>
-            <Form.Item  name="city">
+            <Form.Item name="city">
               <Select
                 placeholder="P. Ejm. Lima"
                 size="large"
                 className="form-item"
                 showSearch
               >
-                {cities.map((city)=>(
-                  <Option value={city}>{city}</Option>
+                {cities.map((city, k) => (
+                  <Option value={city.descripcion} key={k}>
+                    {city.descripcion}
+                  </Option>
                 ))}
               </Select>
             </Form.Item>
