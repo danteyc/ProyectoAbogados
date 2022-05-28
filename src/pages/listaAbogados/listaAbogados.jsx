@@ -5,6 +5,11 @@ import { useParams } from "react-router-dom";
 import { getLawyers } from "../../api/getLawyers";
 import ProfilePhoto from "../../assets/images/profile.webp";
 import { Rate } from "antd";
+import {
+  getLawyerCity,
+  getLawyerCitySpecialty,
+  getLawyerSpecialty,
+} from "../../api/getFilterLawyers";
 
 function CardLawyer(props) {
   const { image, name, lastname, city, specialty, stars } = props;
@@ -37,15 +42,37 @@ export function PageListaAbogados() {
   const { ciudad, especialidad } = useParams();
   useEffect(() => {
     if (ciudad === "todos" && especialidad === "todos") {
-      getLawyers().then((data) => {
-        setAbogados(data.data.data);
-      });
+      getLawyers()
+        .then((data) => {
+          setAbogados(data.data.data);
+        })
+        .catch((e) => {
+          console.log("error", e);
+        });
     } else if (ciudad === "todos") {
-      // abogadosFiltrados = abogados.filter((abogado) => abogado.specialty === especialidad);
+      getLawyerSpecialty(especialidad)
+        .then((data) => {
+          setAbogados(data.data.data);
+        })
+        .catch((e) => {
+          console.log("error", e);
+        });
     } else if (especialidad === "todos") {
-      // abogadosFiltrados = abogados.filter((abogado) => abogado.city === ciudad);
+      getLawyerCity(ciudad)
+        .then((data) => {
+          setAbogados(data.data.data);
+        })
+        .catch((e) => {
+          console.log("error", e);
+        });
     } else {
-      // abogadosFiltrados = abogados.filter((abogado) => abogado.city === ciudad && abogado.specialty === especialidad);
+      getLawyerCitySpecialty(ciudad, especialidad)
+        .then((data) => {
+          setAbogados(data.data.data);
+        })
+        .catch((e) => {
+          console.log("error", e);
+        });
     }
   }, [ciudad, especialidad]);
   return (

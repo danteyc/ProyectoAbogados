@@ -1,9 +1,5 @@
-import {
-  BrowserRouter,
-  Switch,
-  Route,
-} from "react-router-dom";
-import "antd/dist/antd.min.css"
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import "antd/dist/antd.min.css";
 import { Header } from "./components/header/header";
 import { Main } from "./components/main/main";
 import { Footer } from "./components/footer/footer";
@@ -18,43 +14,51 @@ import { PageEditarPerfil } from "./pages/editarPerfil/editarPerfil";
 import "./assets/style/main.scss";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
+import { PageAdmin } from "./pages/admin/admin";
+import { PageAgregarAbogado } from "./pages/admin/actions/agregarAbogado";
 
 function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
-          <div className='wrapper'>
-            <Header/>
-            <Main>
-              <Switch>
-                <Route exact path="/">
-                  <PageHome />
-                </Route>
-                <Route path="/abogado/:id">
-                  <PageAbogado />
-                </Route>
-                <Route path="/abogados/:ciudad/:especialidad">
-                  <PageListaAbogados />
-                </Route>
-                <Route path="/registro">
-                  <PageRegistro />
-                </Route>
-                <Route path="/contacto">
-                  <PageContacto/>
-                </Route>
-                <Route path="/iniciar-sesion">
-                  <PageIniciarSesion/>
-                </Route>
-                <Route path="/perfil">
-                  <PagePerfil/>
-                </Route>
-                <Route path="/editar-perfil">
-                  <PageEditarPerfil/>
-                </Route>
-              </Switch>
-            </Main>
-            <Footer/>
-          </div>
+        <div className="wrapper">
+          <Header />
+          <Main>
+            <Switch>
+              <Route exact path="/">
+                <PageHome />
+              </Route>
+              <Route exact path="/admin">
+                <PageAdmin />
+              </Route>
+              <Route path="/admin/agregar">
+                <PageAgregarAbogado />
+              </Route>
+              <Route path="/abogado/:id">
+                <PageAbogado />
+              </Route>
+              <Route path="/abogados/:ciudad/:especialidad">
+                <PageListaAbogados />
+              </Route>
+              <Route path="/registro">
+                <PageRegistro />
+              </Route>
+              <Route path="/contacto">
+                <PageContacto />
+              </Route>
+              <Route path="/iniciar-sesion">
+                <PageIniciarSesion />
+              </Route>
+              <Route path="/perfil">
+                <PagePerfil />
+              </Route>
+              <Route path="/editar-perfil">
+                <PageEditarPerfil />
+              </Route>
+            </Switch>
+          </Main>
+          <Footer />
+        </div>
       </BrowserRouter>
     </Provider>
   );
