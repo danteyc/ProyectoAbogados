@@ -16,7 +16,6 @@ export function PageIniciarSesion() {
           const { token, nombres, rol, id } = data.data;
           console.log(data);
           localStorage.setItem("token", token);
-          history.push("/");
           dispatch({
             type: "SET_ID",
             payload: id,
@@ -33,6 +32,7 @@ export function PageIniciarSesion() {
             type: "SET_IS_LOGIN",
             payload: true,
           });
+          rol === "administrador" ? history.push("/admin") : history.push("/");
         }
       })
       .catch((e) => {

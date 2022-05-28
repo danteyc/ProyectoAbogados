@@ -1,12 +1,14 @@
 import { Button, Rate } from "antd";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { getLawyers } from "../../api/getLawyers";
 import ProfilePhoto from "../../assets/images/profile.webp";
 import "./admin.scss";
 
 function CardLawyer(props) {
-  const { image, name, lastname, city, specialty } = props;
+  const history = useHistory();
+  const { image, name, lastname, city, specialty, id } = props;
   return (
     <div className="card-abogado">
       <figure style={{ position: "relative" }}>
@@ -21,7 +23,6 @@ function CardLawyer(props) {
         <div
           className="buttons-actions"
           style={{
-            display: "flex",
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
@@ -34,6 +35,7 @@ function CardLawyer(props) {
             type="primary"
             style={{ marginBottom: "5px", width: "90px" }}
             size="large"
+            onClick={() => history.push(`/admin/editar/${id}`)}
           >
             Editar
           </Button>
@@ -75,7 +77,7 @@ export function PageAdmin() {
       </div>
       <div className="cards-abogados">
         {abogados.map((abogado, k) => (
-          <Link key={k} className="card" to={`/abogado/${abogado?.id}`}>
+          <React.Fragment key={k}>
             <CardLawyer
               image={abogado?.imagen}
               name={abogado?.nombres}
@@ -83,8 +85,9 @@ export function PageAdmin() {
               city={abogado?.ciudad.descripcion}
               specialty={abogado?.especialidad.descripcion}
               stars={abogado?.calificaciontotal}
+              id={abogado?.id}
             />
-          </Link>
+          </React.Fragment>
         ))}
       </div>
     </div>

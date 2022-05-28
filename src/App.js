@@ -16,6 +16,8 @@ import { Provider } from "react-redux";
 import { store } from "./store/store";
 import { PageAdmin } from "./pages/admin/admin";
 import { PageAgregarAbogado } from "./pages/admin/actions/agregarAbogado";
+import { PrivateRoute } from "./components/PrivateRoute/PrivateRoute";
+import { PageEditarAbogado } from "./pages/admin/actions/editarAbogado";
 
 function App() {
   return (
@@ -28,12 +30,9 @@ function App() {
               <Route exact path="/">
                 <PageHome />
               </Route>
-              <Route exact path="/admin">
-                <PageAdmin />
-              </Route>
-              <Route path="/admin/agregar">
-                <PageAgregarAbogado />
-              </Route>
+              <PrivateRoute exact path="/admin" component={PageAdmin} />
+              <PrivateRoute exact path="/admin/agregar" component={PageAgregarAbogado} />
+              <PrivateRoute exact path="/admin/editar/:id" component={PageEditarAbogado} />
               <Route path="/abogado/:id">
                 <PageAbogado />
               </Route>

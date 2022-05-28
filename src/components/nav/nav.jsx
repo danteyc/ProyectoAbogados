@@ -6,42 +6,43 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-
 export function Nav() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const name = useSelector((state)=> state.name);
-  const isLogin = useSelector((state)=> state.isLogin);
+  const name = useSelector((state) => state.name);
+  const isLogin = useSelector((state) => state.isLogin);
   const menu = (
     <Menu>
       <Menu.Item key="0">
-        <NavLink to="/perfil">Perfil</NavLink>
-      </Menu.Item>
-      <Menu.Item key="1">
-        <NavLink to="/editar-perfil">Editar Perfil</NavLink>
-      </Menu.Item>
-      <Menu.Item key="2">
-        <NavLink to="/"
-        onClick={(e)=>{
-          e.preventDefault();
-          dispatch({
-            type: "SET_IS_LOGIN",
-            payload: false,
-          });
-          dispatch({
-            type: "SET_NAME",
-            payload: null,
-          });
-          dispatch({
-            type: "SET_ID",
-            payload: null,
-          });
-          history.push("/iniciar-sesion")
-        }}>Cerrar Sesión</NavLink>
+        <NavLink
+          to="/"
+          onClick={(e) => {
+            e.preventDefault();
+            dispatch({
+              type: "SET_IS_LOGIN",
+              payload: false,
+            });
+            dispatch({
+              type: "SET_NAME",
+              payload: null,
+            });
+            dispatch({
+              type: "SET_ID",
+              payload: null,
+            });
+            dispatch({
+              type: "SET_ROL",
+              payload: null,
+            });
+            history.push("/iniciar-sesion");
+          }}
+        >
+          Cerrar Sesión
+        </NavLink>
       </Menu.Item>
     </Menu>
   );
-  
+
   return (
     <nav className="nav">
       <ul>
@@ -66,8 +67,7 @@ export function Nav() {
           <li>
             <NavLink to="/iniciar-sesion">Iniciar Sesión</NavLink>
           </li>
-        )
-        }
+        )}
       </ul>
     </nav>
   );

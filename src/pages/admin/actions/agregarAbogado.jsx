@@ -1,5 +1,6 @@
 import { Button, Col, Form, Input, Row, Select } from "antd";
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { getCities } from "../../../api/getCities";
 import { getSpecialties } from "../../../api/getSpecialties";
 import { postLawyer } from "../../../api/postLawyer";
@@ -7,6 +8,7 @@ import { UploadImage } from "../../../components/UploadImage/UploadImage";
 const { TextArea } = Input;
 const { Option } = Select;
 export function PageAgregarAbogado() {
+  const history = useHistory();
   const [cities, setCities] = useState([]);
   const [specialties, setSpecialties] = useState([]);
   useEffect(() => {
@@ -29,7 +31,7 @@ export function PageAgregarAbogado() {
     values.imagen = values.imagen[0].response;
     console.log(values);
     postLawyer(values).then((data) => {
-      console.log(data);
+      data.status===201 &&  history.push("/admin")
     });
   };
   return (

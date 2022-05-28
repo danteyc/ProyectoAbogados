@@ -1,12 +1,24 @@
-.admin{
-    padding: 24px 0;
-    h2{
-        text-align: center;
-        color: #0c55c3;
+.admin {
+  padding: 24px 0;
+  h2 {
+    text-align: center;
+    color: #0c55c3;
+  }
+  .buttons {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 20px;
+  }
+}
+.card-abogado {
+  figure {
+    .buttons-actions {
+      display: none;
     }
-    .buttons{
+    &:hover {
+      .buttons-actions {
         display: flex;
-        justify-content: end;
-        margin-bottom: 20px;
+      }
     }
+  }
 }

@@ -4,12 +4,16 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import buttonwtp from "../../assets/images/btn-wtp.png";
 import { getLawyer } from "../../api/getLawyer";
+import { getContactLawyer } from "../../api/getContactLawyer";
 import ProfilePhoto from "../../assets/images/profile.webp";
-import { Rate } from "antd";
+import { Rate, message } from "antd";
+import { useSelector } from "react-redux";
 
 export function PageAbogado() {
   const { id } = useParams();
   const [lawyer, setLawyer] = useState({});
+  const [contactLawyer, setContactLawyer] = useState({});
+  const rol = useSelector((state) => state.rol);
 
   useEffect(() => {
     getLawyer(id)
@@ -19,7 +23,15 @@ export function PageAbogado() {
       .catch((e) => {
         console.log(e, "error");
       });
+    getContactLawyer(id)
+      .then((response) => {
+        setContactLawyer(response.data.data);
+      })
+      .catch((e) => {
+        console.log(e, "error");
+      });
   }, [id]);
+
   return (
     <div className="container cnt-container">
       <div className="box">
@@ -63,9 +75,29 @@ export function PageAbogado() {
           <div className="cita-card">
             <h3 className="cita-card-title">AGENDAR UNA CITA </h3>
             <div className="cita">
-              <a href="https://wa.me/51999999999">
-                <img src={buttonwtp} alt="logo wasap" className="button-wtp" />
-              </a>
+              {rol === "administrador" || rol === "cliente" ? (
+                <a href={`https://wa.me/51${contactLawyer?.telefono}`}>
+                  <img
+                    src={buttonwtp}
+                    alt="logo wasap"
+                    className="button-wtp"
+                  />
+                </a>
+              ) : (
+                <a
+                  onClick={() =>
+                    message.error(
+                      "Inicia sesión para acceder al teléfono del abogado"
+                    )
+                  }
+                >
+                  <img
+                    src={buttonwtp}
+                    alt="logo wasap"
+                    className="button-wtp"
+                  />
+                </a>
+              )}
             </div>
             <div className="cita cita-city">
               <div className="cita_dato-title">
@@ -77,7 +109,15 @@ export function PageAbogado() {
               <div className="cita_dato-title">
                 <MailOutlined className="icon-card" /> Correo
               </div>
-              <h4 className="cita_dato">{lawyer.email}</h4>
+              <h4 className="cita_dato">
+                {rol === "administrador" || rol === "cliente" ? (
+                  contactLawyer.email
+                ) : (
+                  <span style={{ color: "#b7b7b7" }}>
+                    Inicia Sesión para ver el correo
+                  </span>
+                )}
+              </h4>
             </div>
           </div>
         </div>
