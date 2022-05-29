@@ -93,7 +93,6 @@ export function PageEditarAbogado() {
               <Form.Item
                 label="Nombres"
                 name="nombres"
-                initialValue={lawyer?.nombres}
               >
                 <Input placeholder="Nombres" />
               </Form.Item>
