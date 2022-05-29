@@ -28,10 +28,10 @@ export function PageAgregarAbogado() {
       });
   }, []);
   const onFinish = (values) => {
-    values.imagen = values.imagen[0].response;
+    values.imagen = values?.imagen[0]?.response;
     console.log(values);
     postLawyer(values).then((data) => {
-      data.status===201 &&  history.push("/admin")
+      data.status === 201 && history.push("/admin");
     });
   };
   return (

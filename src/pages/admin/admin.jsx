@@ -25,7 +25,7 @@ export function PageAdmin() {
   };
   useEffect(() => {
     getData();
-  }, []);
+  }, [abogados]);
 
   return (
     <div className="container admin">
